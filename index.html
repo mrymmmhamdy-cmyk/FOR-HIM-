@@ -14,11 +14,11 @@
 
     h1 {
       color: #ff4d88;
-      font-size: 35px;
+      font-size: 32px;
     }
 
     button {
-      padding: 12px 25px;
+      padding: 12px 22px;
       font-size: 18px;
       margin: 10px;
       border-radius: 20px;
@@ -36,7 +36,7 @@
     }
 
     #message {
-      font-size: 24px;
+      font-size: 22px;
       color: #ff3385;
       margin-top: 20px;
       white-space: pre-line;
@@ -57,9 +57,9 @@
 
 <body>
 
-<h1 id="question">Tap to start 💕</h1>
+<h1 id="question">Tap start 💖</h1>
 
-<button class="yes" onclick="startGame()">Start 💖</button>
+<button class="yes" onclick="startGame()">Start 🎀</button>
 
 <div id="buttons"></div>
 <p id="message"></p>
@@ -67,53 +67,63 @@
 <script>
 
 function startGame() {
-  document.getElementById("question").innerHTML = "Do you wanna play? 🎀";
+  document.getElementById("question").innerHTML = "Do you wanna play with me? 🎮💗";
+
   document.getElementById("buttons").innerHTML = `
-    <button class="yes" onclick="playYes()">Yes 💕</button>
-    <button class="no" onclick="howDare()">No 😤</button>
+    <button class="yes" onclick="level1Yes()">Yes 💕</button>
+    <button class="no" onclick="noReaction()">No 😤</button>
   `;
 }
 
-function playYes() {
-  document.getElementById("message").innerHTML = "Yaaay!! 💗";
+function noReaction() {
+  document.getElementById("message").innerHTML = "No? 😭 try again… I think you pressed wrong 💔";
+}
+
+function level1Yes() {
+  document.getElementById("message").innerHTML = "Yayyy 💖 let's gooo!";
 
   setTimeout(() => {
-    document.getElementById("question").innerHTML = "Do you love me? 💖";
+    document.getElementById("question").innerHTML = "Pick one 💗";
     document.getElementById("buttons").innerHTML = `
-      <button class="yes" onclick="loveYes()">Yes 😍</button>
-      <button class="no" onclick="howDare()">No 😤</button>
+      <button class="yes" onclick="level2()">❤️ Heart</button>
+      <button class="no" onclick="level2()">🌸 Flower</button>
     `;
   }, 1000);
 }
 
-function loveYes() {
-  document.getElementById("question").innerHTML = "Awww 💕";
+function level2() {
+  document.getElementById("question").innerHTML = "Last question 💕";
+  document.getElementById("buttons").innerHTML = `
+    <button class="yes" onclick="finalYes()">Yes 😍</button>
+    <button class="no" onclick="noReaction()">No 😤</button>
+  `;
+}
+
+function finalYes() {
+  document.getElementById("question").innerHTML = "Awww 💗";
   document.getElementById("buttons").innerHTML = "";
-  
-  document.getElementById("message").innerHTML =
-    "I love you toooo 💗💗💗 🌸✨\nYou make my world softer and brighter 💕";
-
-  setTimeout(showGift, 2000);
-}
-
-function howDare() {
-  document.getElementById("message").innerHTML = "HOW DARE YOU 😭😤💔";
-}
-
-function showGift() {
-  document.getElementById("question").innerHTML = "This is for you 🎁";
 
   document.getElementById("message").innerHTML =
-    "🌸🌸🌸 A little piece of love just for you 🌸🌸🌸\n\n" +
-    "And one more thing… 💗\n" +
-    "don’t be sad about what you lost today.\n" +
-    "Money can come back… but you are irreplaceable to me.\n" +
-    "I’m here with you, okay? 💕";
+    "I love you so much 💖💖💖\n" +
+    "You make my world better just by existing 🌸✨";
+
+  setTimeout(showEndMessage, 2500);
+}
+
+function showEndMessage() {
+  document.getElementById("question").innerHTML = "For you 💌";
+
+  document.getElementById("message").innerHTML =
+    "🌸 Now listen… 💗\n\n" +
+    "Don’t be sad about what happened today.\n" +
+    "I know you lost money, but it doesn’t define you.\n\n" +
+    "You are still strong, still amazing, still you.\n" +
+    "And I’m still here with you, okay? 💕";
 
 }
 
 /* flowers */
-for (let i = 0; i < 25; i++) {
+for (let i = 0; i < 30; i++) {
   let flower = document.createElement("div");
   flower.className = "flower";
   flower.innerHTML = "🌸";
