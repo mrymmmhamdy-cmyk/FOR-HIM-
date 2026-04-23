@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
 
+  <style>
+    body {
+      text-align: center;
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(#ffd6e0, #fff0f5);
+      margin-top: 80px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 35px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .yes {
+      background-color: #ff66a3;
+      color: white;
+    }
+
+    .no {
+      background-color: #ccc;
+    }
+
+    #message {
+      font-size: 24px;
+      color: #ff3385;
+      margin-top: 20px;
+      white-space: pre-line;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 22px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -10%; }
+      100% { top: 110%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1 id="question">Tap to start 💕</h1>
+
+<button class="yes" onclick="startGame()">Start 💖</button>
+
+<div id="buttons"></div>
+<p id="message"></p>
+
+<script>
+
+function startGame() {
+  document.getElementById("question").innerHTML = "Do you wanna play? 🎀";
+  document.getElementById("buttons").innerHTML = `
+    <button class="yes" onclick="playYes()">Yes 💕</button>
+    <button class="no" onclick="howDare()">No 😤</button>
+  `;
+}
+
+function playYes() {
+  document.getElementById("message").innerHTML = "Yaaay!! 💗";
+
+  setTimeout(() => {
+    document.getElementById("question").innerHTML = "Do you love me? 💖";
+    document.getElementById("buttons").innerHTML = `
+      <button class="yes" onclick="loveYes()">Yes 😍</button>
+      <button class="no" onclick="howDare()">No 😤</button>
+    `;
+  }, 1000);
+}
+
+function loveYes() {
+  document.getElementById("question").innerHTML = "Awww 💕";
+  document.getElementById("buttons").innerHTML = "";
+  
+  document.getElementById("message").innerHTML =
+    "I love you toooo 💗💗💗 🌸✨\nYou make my world softer and brighter 💕";
+
+  setTimeout(showGift, 2000);
+}
+
+function howDare() {
+  document.getElementById("message").innerHTML = "HOW DARE YOU 😭😤💔";
+}
+
+function showGift() {
+  document.getElementById("question").innerHTML = "This is for you 🎁";
+
+  document.getElementById("message").innerHTML =
+    "🌸🌸🌸 A little piece of love just for you 🌸🌸🌸\n\n" +
+    "And one more thing… 💗\n" +
+    "don’t be sad about what you lost today.\n" +
+    "Money can come back… but you are irreplaceable to me.\n" +
+    "I’m here with you, okay? 💕";
+
+}
+
+/* flowers */
+for (let i = 0; i < 25; i++) {
+  let flower = document.createElement("div");
+  flower.className = "flower";
+  flower.innerHTML = "🌸";
+  flower.style.left = Math.random() * 100 + "%";
+  flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.body.appendChild(flower);
+}
+
+</script>
+
+</body>
+</html>
